@@ -104,10 +104,16 @@ function getFulfillmentLabel(status) {
 
 /* ── Google Sheets helpers ────────────────────────────────────── */
 async function getSheetsClient() {
-  const auth = new google.auth.GoogleAuth({
-    keyFile: KEY_FILE,
-    scopes: ['https://www.googleapis.com/auth/spreadsheets']
-  });
+  const authOpts = { scopes: ['https://www.googleapis.com/auth/spreadsheets'] };
+  if (process.env.GOOGLE_CREDENTIALS_B64) {
+    // GitHub Actions: decode base64 credentials directly — no file needed
+    authOpts.credentials = JSON.parse(
+      Buffer.from(process.env.GOOGLE_CREDENTIALS_B64, 'base64').toString('utf8')
+    );
+  } else {
+    authOpts.keyFile = KEY_FILE;
+  }
+  const auth = new google.auth.GoogleAuth(authOpts);
   return google.sheets({ version: 'v4', auth });
 }
 

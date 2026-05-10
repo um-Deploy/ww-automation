@@ -35,13 +35,8 @@ jobs:
         run: npm install
         working-directory: Shopify Order Agent
 
-      - name: Write Google credentials
-        run: |
-          mkdir -p credentials
-          echo "${{ secrets.GOOGLE_CREDENTIALS_B64 }}" | base64 -d > credentials/ww-ai-automation-6e7f331fdd57.json
-
       - name: Run orders script
         env:
-          GOOGLE_CREDENTIALS_PATH: ${{ github.workspace }}/credentials/ww-ai-automation-6e7f331fdd57.json
+          GOOGLE_CREDENTIALS_B64: ${{ secrets.GOOGLE_CREDENTIALS_B64 }}
         run: node sheets-orders.mjs ${{ github.event.inputs.mode || '--today' }}
         working-directory: Shopify Order Agent
