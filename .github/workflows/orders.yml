@@ -1,0 +1,47 @@
+name: Woodwaley Orders → Sheets
+
+on:
+  # Manual trigger from GitHub mobile app
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Which orders to fetch'
+        required: true
+        default: '--today'
+        type: choice
+        options:
+          - --today
+          - --days 7
+          - --days 30
+
+  # Auto-run every day at 9:00 AM IST (3:30 AM UTC)
+  schedule:
+    - cron: '30 3 * * *'
+
+jobs:
+  update-sheet:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: Shopify Order Agent
+
+      - name: Write Google credentials
+        run: |
+          mkdir -p credentials
+          echo '${{ secrets.GOOGLE_CREDENTIALS_JSON }}' > credentials/ww-ai-automation-6e7f331fdd57.json
+
+      - name: Run orders script
+        env:
+          GOOGLE_CREDENTIALS_PATH: ${{ github.workspace }}/credentials/ww-ai-automation-6e7f331fdd57.json
+        run: node sheets-orders.mjs ${{ github.event.inputs.mode || '--today' }}
+        working-directory: Shopify Order Agent

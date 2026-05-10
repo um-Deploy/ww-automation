@@ -1,0 +1,14 @@
+{
+  "_comment": "Edit freely. No restart needed — changes hot-reload.",
+  "businessName": "Woodwaley",
+  "agentName": "Aria",
+  "tagline": "✨ Handcrafted Gifts & Décor",
+  "website": "https://woodwaley.in/",
+  "catalogNote": "Our detailed catalogue is coming soon on our website. For now, browse our store at https://woodwaley.in/ or ask Aria for product details!",
+  "about": "Woodwaley specialises in handcrafted wooden gifts and home décor — personalised keepsakes, statement pieces, and bulk corporate gifting. Every piece is made with love and attention to detail.",
+  "city": "India",
+  "deliveryAreas": "Pan India via courier | Express delivery available",
+  "instagram": "@woodwaley",
+  "humanHandoffTriggers": ["speak to a person", "talk to someone", "human agent", "call me", "manager", "not helpful", "real person"],
+  "humanHandoffMessage": "Of course! 🙏 Let me connect you with our team. Someone will reach out to you on WhatsApp shortly. You can also visit us at https://woodwaley.in/"
+}

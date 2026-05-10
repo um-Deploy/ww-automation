@@ -1,0 +1,84 @@
+{
+  "_comment": "Add/edit your products here. The AI will use this as its product knowledge. Prices are indicative — update freely.",
+
+  "personalGifting": {
+    "label": "Personal Gifting",
+    "description": "Handcrafted gifts for every occasion — birthdays, anniversaries, weddings, baby showers, festivals, and more.",
+    "occasions": ["Birthday", "Anniversary", "Wedding", "Baby Shower", "Diwali", "Christmas", "Valentine's Day", "Farewell", "House Warming", "Just Because"],
+    "budgetRanges": [
+      { "label": "Under ₹500", "description": "Budget-friendly but heartfelt — candles, keychains, small frames" },
+      { "label": "₹500–₹1,500", "description": "Personalised mugs, photo gifts, small hampers" },
+      { "label": "₹1,500–₹5,000", "description": "Premium hampers, personalised jewellery boxes, custom art" },
+      { "label": "₹5,000+", "description": "Luxury gifting — large hampers, statement décor pieces, full personalisation" }
+    ],
+    "categories": [
+      {
+        "name": "Personalised Gifts",
+        "items": [
+          { "name": "Custom Name Frame", "priceRange": "₹499–₹999", "description": "Wooden/acrylic frame with name or message, LED option available", "customisation": "Name, date, colour, size" },
+          { "name": "Personalised Mug", "priceRange": "₹349–₹599", "description": "Ceramic mug with photo, quote, or name print", "customisation": "Photo, text, colour" },
+          { "name": "Photo Cushion", "priceRange": "₹599–₹899", "description": "Soft cushion with custom photo print", "customisation": "Photo, quote" },
+          { "name": "Custom Jewellery Box", "priceRange": "₹1,200–₹2,500", "description": "Wooden jewellery box with engraved name or quote", "customisation": "Name, quote, colour" },
+          { "name": "Memory Jar / Capsule", "priceRange": "₹799–₹1,499", "description": "Glass jar filled with printed memories or notes", "customisation": "Photos, messages" }
+        ]
+      },
+      {
+        "name": "Gift Hampers",
+        "items": [
+          { "name": "Self-Care Hamper", "priceRange": "₹1,200–₹3,500", "description": "Candles, bath salts, face mask, chocolates — curated in a pretty box", "customisation": "Product selection, box colour, ribbon, card" },
+          { "name": "Gourmet Hamper", "priceRange": "₹1,500–₹5,000", "description": "Artisanal chocolates, cookies, tea/coffee, dry fruits", "customisation": "Product mix, packaging" },
+          { "name": "Birthday Surprise Box", "priceRange": "₹999–₹2,500", "description": "Personalised items + treats in a festive box", "customisation": "Theme, products inside" },
+          { "name": "New Baby Hamper", "priceRange": "₹1,800–₹4,000", "description": "Organic baby essentials + keepsake item", "customisation": "Baby's name, gender theme" }
+        ]
+      },
+      {
+        "name": "Home Décor",
+        "items": [
+          { "name": "Macramé Wall Hanging", "priceRange": "₹899–₹3,500", "description": "Handwoven macramé in various sizes and styles", "customisation": "Size, colour, fringe style" },
+          { "name": "Scented Candle Set", "priceRange": "₹499–₹1,800", "description": "Soy/coconut wax candles in ceramic/glass jars", "customisation": "Fragrance, colour, label" },
+          { "name": "Resin Art Tray / Coaster Set", "priceRange": "₹799–₹2,200", "description": "Handmade resin art pieces in various patterns", "customisation": "Colour palette, size, monogram" },
+          { "name": "Custom Family Portrait (Digital)", "priceRange": "₹1,500–₹3,000", "description": "Illustrated digital portrait of your family/pet", "customisation": "Style, number of people/pets, background" },
+          { "name": "Floral Preserved Frame", "priceRange": "₹1,200–₹3,500", "description": "Real preserved flowers in a frame or glass dome", "customisation": "Flower type, colour, frame size" }
+        ]
+      }
+    ]
+  },
+
+  "corporate": {
+    "label": "Corporate Bulk Orders",
+    "description": "Curated bulk gifting and décor solutions for offices, events, employee recognition, and client appreciation.",
+    "occasions": ["Diwali Gifting", "Employee Onboarding Kit", "Client Appreciation", "Company Anniversary", "Event Décor", "Festive Season Gifts", "Conference / Product Launch", "Year-End Awards"],
+    "moq": "Minimum order: 25 units (most products) | 50 units (full hampers)",
+    "leadTimes": {
+      "standard": "7–10 working days",
+      "rush": "3–5 working days (surcharge applies)"
+    },
+    "brandingOptions": ["Logo printing", "Custom packaging / boxes", "Branded ribbon & tags", "Company message card", "Custom colour themes"],
+    "categories": [
+      {
+        "name": "Festive Hampers (Bulk)",
+        "items": [
+          { "name": "Diwali Gift Hamper", "priceRange": "₹699–₹3,500 per unit", "description": "Diyas, sweets, dry fruits, chocolates in branded packaging", "moq": "50 units" },
+          { "name": "Premium Festive Box", "priceRange": "₹1,500–₹5,000 per unit", "description": "Luxury items — artisanal chocolates, scented candles, dry fruits, personalised card", "moq": "25 units" },
+          { "name": "Eco-Friendly Hamper", "priceRange": "₹999–₹2,500 per unit", "description": "Sustainable products — seed kits, bamboo items, organic goodies", "moq": "25 units" }
+        ]
+      },
+      {
+        "name": "Employee & Onboarding Kits",
+        "items": [
+          { "name": "Welcome Kit", "priceRange": "₹799–₹2,000 per unit", "description": "Notebook, pen, mug, plant — branded for your company", "moq": "25 units" },
+          { "name": "Work-From-Home Kit", "priceRange": "₹1,200–₹3,000 per unit", "description": "Desk organiser, candle, snacks, branded stationery", "moq": "25 units" },
+          { "name": "Recognition / Awards Kit", "priceRange": "₹1,500–₹4,000 per unit", "description": "Engraved trophy/plaque + premium hamper", "moq": "10 units" }
+        ]
+      },
+      {
+        "name": "Event & Office Décor",
+        "items": [
+          { "name": "Table Centrepiece Sets", "priceRange": "₹500–₹2,500 per set", "description": "Floral/candle/resin centrepieces for events", "moq": "10 units" },
+          { "name": "Branded Desk Décor", "priceRange": "₹400–₹1,500 per unit", "description": "Photo frames, pen stands, planters with logo", "moq": "25 units" },
+          { "name": "Event Backdrop / Installations", "priceRange": "₹5,000–₹50,000", "description": "Custom floral walls, balloon arches, branded photo walls", "moq": "1 unit (per event)" }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "_comment": "Map catalog files (placed in the catalog/ folder) to lead types. The agent will send the right one automatically.",
+  "personal": {
+    "label": "Personal Gifting Catalog",
+    "file": "catalog/personal-catalog.pdf",
+    "caption": "🎁 Here's our complete gift & décor catalog! Take a look and tell me what catches your eye — I'll share more details, pricing, and customisation options for anything you like. 😊",
+    "fallbackMessage": "You can browse our full collection on our Instagram @yourstudio or website yourstudio.com — there's so much to explore! Tell me your occasion and budget and I'll suggest the best options."
+  },
+  "corporate": {
+    "label": "Corporate Rate Card",
+    "file": "catalog/corporate-catalog.pdf",
+    "caption": "📦 Here's our Corporate Gifting & Décor catalog with our full range and bulk pricing. Please take a look and let me know which products interest you — we can customise packaging, add your branding, and tailor it to your occasion! 🏢",
+    "fallbackMessage": "Let me tell you about our most popular corporate gifting options! We can create fully customised hampers with your branding. What's the occasion you're planning for?"
+  },
+  "imageAlbums": {
+    "_comment": "Optional — send image albums (groups of images) instead of/in addition to PDF. Place images in catalog/images/",
+    "personal": [],
+    "corporate": []
+  }
+}

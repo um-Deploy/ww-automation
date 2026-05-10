@@ -1,0 +1,17 @@
+.env
+node_modules/
+.wwebjs_auth/
+.wwebjs_auth_outreach*/
+.wwebjs_cache/
+credentials/
+temp/
+.claude/
+Soft/
+catalog/
+data/
+test_priya.mp3
+__pycache__/
+*.pyc
+*.pyo
+audio_cache/
+jewelry-store/jewelry-theme/

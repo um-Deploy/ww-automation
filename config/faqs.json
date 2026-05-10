@@ -1,0 +1,49 @@
+{
+  "_comment": "Add your most common customer questions here. The AI will use these to answer accurately.",
+  "faqs": [
+    {
+      "question": "Do you do custom/personalised orders?",
+      "answer": "Yes! Almost everything can be personalised — name, photo, message, colour, or size. Just tell me what you have in mind!"
+    },
+    {
+      "question": "How long does delivery take?",
+      "answer": "Standard orders: 5–7 working days pan India. Same-day or next-day delivery available within Mumbai. Rush orders can be accommodated — just let me know your deadline!"
+    },
+    {
+      "question": "What is the delivery charge?",
+      "answer": "Delivery charges depend on your location and order size. Free delivery for orders above ₹2,000 within Mumbai. For other cities, we share the exact shipping cost after confirming the order."
+    },
+    {
+      "question": "Can I see more photos or the full catalog?",
+      "answer": "Absolutely! I'll share our catalog right away. You can also find more on our Instagram @yourstudio."
+    },
+    {
+      "question": "How do I place an order?",
+      "answer": "Easy! Just tell me what you'd like, share any personalisation details, and confirm your delivery address. We'll send you a payment link once everything is confirmed."
+    },
+    {
+      "question": "What payment methods do you accept?",
+      "answer": "We accept UPI (GPay, PhonePe, Paytm), bank transfer, and card payments via our payment link. Full payment required to begin production for personalised items."
+    },
+    {
+      "question": "Do you ship outside India?",
+      "answer": "Currently we ship within India only. For international inquiries, please reach out and we'll see what we can arrange!"
+    },
+    {
+      "question": "Can I return or exchange?",
+      "answer": "Personalised items cannot be returned unless there's a manufacturing defect. For non-personalised items, exchanges are accepted within 48 hours of delivery. Please share an unboxing video if there's any damage."
+    },
+    {
+      "question": "What is the minimum order for corporate/bulk?",
+      "answer": "Minimum 25 units for most corporate gift items, and 50 units for full hampers. For décor installations, we take single-event orders."
+    },
+    {
+      "question": "Can you add our company logo to the packaging?",
+      "answer": "Yes! Branding options include logo printing, custom boxes, branded ribbons & tags, and personalised message cards. Share your logo and we'll show you options."
+    },
+    {
+      "question": "How early should I place a bulk order?",
+      "answer": "We recommend placing bulk orders at least 15–20 days before your event. For Diwali and festive season, book early — slots fill up fast!"
+    }
+  ]
+}

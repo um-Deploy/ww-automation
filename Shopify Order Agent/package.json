@@ -1,0 +1,7 @@
+{
+  "name": "ww-order-agent",
+  "type": "commonjs",
+  "dependencies": {
+    "googleapis": "^144.0.0"
+  }
+}
