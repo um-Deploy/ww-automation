@@ -36,9 +36,11 @@ jobs:
         working-directory: Shopify Order Agent
 
       - name: Write Google credentials
+        env:
+          CREDS: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
         run: |
           mkdir -p credentials
-          echo '${{ secrets.GOOGLE_CREDENTIALS_JSON }}' > credentials/ww-ai-automation-6e7f331fdd57.json
+          printf '%s' "$CREDS" > credentials/ww-ai-automation-6e7f331fdd57.json
 
       - name: Run orders script
         env:
