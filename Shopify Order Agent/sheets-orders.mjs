@@ -42,12 +42,13 @@ const isToday = args.includes('--today');
 const days    = isToday ? 1 : parseInt(args[args.indexOf('--days') + 1] || '7', 10);
 
 const since = new Date();
+let until = null;
 if (isToday) {
-  // Midnight IST (UTC+5:30) — correct regardless of server timezone
   const IST_OFFSET_MS = 5.5 * 60 * 60 * 1000;
-  const nowIST = new Date(Date.now() + IST_OFFSET_MS);
-  const midnightIST = new Date(Date.UTC(nowIST.getUTCFullYear(), nowIST.getUTCMonth(), nowIST.getUTCDate()));
-  since.setTime(midnightIST.getTime() - IST_OFFSET_MS);
+  const nowIST      = new Date(Date.now() + IST_OFFSET_MS);
+  const midnightUTC = new Date(Date.UTC(nowIST.getUTCFullYear(), nowIST.getUTCMonth(), nowIST.getUTCDate()));
+  since.setTime(midnightUTC.getTime() - IST_OFFSET_MS);           // 00:00 IST today
+  until = new Date(midnightUTC.getTime() - IST_OFFSET_MS + 86400000); // 00:00 IST tomorrow
 } else {
   since.setDate(since.getDate() - days);
 }
@@ -301,9 +302,10 @@ async function clearDataRows(sheets) {
 async function main() {
   process.stdout.write('Fetching Shopify orders…');
 
+  const maxParam = until ? `&created_at_max=${until.toISOString()}` : '';
   const [orders, products] = await Promise.all([
     // status=open excludes cancelled; fulfilled filtered below
-    fetchAll(`/admin/api/2024-01/orders.json?status=open&limit=250&created_at_min=${since.toISOString()}`),
+    fetchAll(`/admin/api/2024-01/orders.json?status=open&limit=250&created_at_min=${since.toISOString()}${maxParam}`),
     fetchAll('/admin/api/2024-01/products.json?limit=250&fields=id,variants,images')
   ]);
 

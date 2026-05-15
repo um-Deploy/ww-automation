@@ -23,11 +23,17 @@ const args  = process.argv.slice(2);
 const today = args.includes('--today');
 const days  = today ? 1 : parseInt(args[args.indexOf('--days') + 1] || '7', 10);
 
-const since = new Date();
+const IST_MS = 5.5 * 60 * 60 * 1000;
+let since, until;
 if (today) {
-  since.setHours(0, 0, 0, 0);
+  const nowIST     = new Date(Date.now() + IST_MS);
+  const midnightUTC = new Date(Date.UTC(nowIST.getUTCFullYear(), nowIST.getUTCMonth(), nowIST.getUTCDate()));
+  since = new Date(midnightUTC.getTime() - IST_MS);           // 00:00:00 IST today
+  until = new Date(midnightUTC.getTime() - IST_MS + 86400000); // 00:00:00 IST tomorrow (= 24:00 today)
 } else {
+  since = new Date();
   since.setDate(since.getDate() - days);
+  until = null;
 }
 
 const OUT_HTML = path.join(__dirname, 'orders-report.html');
@@ -104,7 +110,8 @@ async function main() {
   process.stdout.write(`Fetching orders (${label})…`);
 
   // Fetch orders + product images in parallel
-  const ordersPath = `/admin/api/2024-01/orders.json?status=any&limit=250&created_at_min=${since.toISOString()}`;
+  const maxParam   = until ? `&created_at_max=${until.toISOString()}` : '';
+  const ordersPath = `/admin/api/2024-01/orders.json?status=any&limit=250&created_at_min=${since.toISOString()}${maxParam}`;
   const prodsPath  = `/admin/api/2024-01/products.json?limit=250&fields=id,variants,images`;
 
   const [orders, products] = await Promise.all([
@@ -113,6 +120,21 @@ async function main() {
   ]);
 
   console.log(` ${orders.length} orders found.`);
+
+  if (!orders.length) {
+    const noOrdersHtml = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Woodwaley Orders</title></head>
+<body style="font-family:sans-serif;padding:40px;background:#f4f1ef">
+<h2 style="color:#5c3d2e">📦 Woodwaley — Order Report</h2>
+<p style="font-size:16px;color:#555">No orders for <strong>${label}</strong>.<br>
+Generated ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}</p>
+</body></html>`;
+    fs.writeFileSync(OUT_HTML, noOrdersHtml, 'utf8');
+    fs.writeFileSync(OUT_CSV, '﻿Order No,Date,Item Name,Image URL,Qty,Payment Type,Customisation,Order Total\r\n', 'utf8');
+    console.log(`\n✓ No orders for ${label}.`);
+    console.log(`✓ HTML  → ${OUT_HTML}`);
+    console.log(`✓ CSV   → ${OUT_CSV}`);
+    return;
+  }
 
   // Build variant → image URL map
   const variantImg = {};

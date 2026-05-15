@@ -37,9 +37,18 @@ const listChats = args.includes('--list-chats');
 const isToday   = args.includes('--today');
 const days      = isToday ? 1 : parseInt(args[args.indexOf('--days') + 1] || '1', 10);
 
-const since = new Date();
-if (isToday) { since.setHours(0, 0, 0, 0); }
-else         { since.setDate(since.getDate() - days); }
+const IST_MS = 5.5 * 60 * 60 * 1000;
+let since, until;
+if (isToday) {
+  const nowIST      = new Date(Date.now() + IST_MS);
+  const midnightUTC = new Date(Date.UTC(nowIST.getUTCFullYear(), nowIST.getUTCMonth(), nowIST.getUTCDate()));
+  since = new Date(midnightUTC.getTime() - IST_MS);
+  until = new Date(midnightUTC.getTime() - IST_MS + 86400000);
+} else {
+  since = new Date();
+  since.setDate(since.getDate() - days);
+  until = null;
+}
 
 /* ── Shopify helpers ──────────────────────────────────────────── */
 function shopifyGet(urlPath) {
@@ -148,8 +157,9 @@ async function main() {
 
   /* Fetch orders + product images in parallel */
   console.log('Fetching orders from Shopify…');
+  const maxParam = until ? `&created_at_max=${until.toISOString()}` : '';
   const [orders, products] = await Promise.all([
-    fetchAll(`/admin/api/2024-01/orders.json?status=any&limit=250&created_at_min=${since.toISOString()}`),
+    fetchAll(`/admin/api/2024-01/orders.json?status=any&limit=250&created_at_min=${since.toISOString()}${maxParam}`),
     fetchAll('/admin/api/2024-01/products.json?limit=250&fields=id,variants,images')
   ]);
   console.log(`${orders.length} orders found.`);
