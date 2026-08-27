@@ -13,6 +13,7 @@ on:
           - --today
           - --days 7
           - --days 30
+          - --days 90
 
   # Auto-run every day at 9:00 AM IST (3:30 AM UTC)
   schedule:
