@@ -39,5 +39,5 @@ jobs:
       - name: Run orders script
         env:
           GOOGLE_CREDENTIALS_B64: ${{ secrets.GOOGLE_CREDENTIALS_B64 }}
-        run: node sheets-orders.mjs ${{ github.event.inputs.mode || '--today' }}
+        run: node sheets-orders.mjs ${{ github.event.inputs.mode || '--days 6' }}
         working-directory: Shopify Order Agent
