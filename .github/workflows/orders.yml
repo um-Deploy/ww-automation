@@ -7,7 +7,7 @@ on:
       mode:
         description: 'Which orders to fetch'
         required: true
-        default: '--today'
+        default: '--days 6' 
         type: choice
         options:
           - --today
